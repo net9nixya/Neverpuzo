@@ -195,11 +195,11 @@ NeverLose.MainColor = Color3.fromRGB(8, 8, 13);
 NeverLose.RegisiteryColor = {};
 NeverLose.NameRegisitry = {};
 NeverLose.IsMosueOverOtherFrame = false;
-NeverLose.GlobalLogo = "rbxassetid://103756509029324";
+NeverLose.GlobalLogo = "rbxassetid://120358385035996";
 NeverLose.ImageColorMapping = "rbxassetid://4155801252";
 
 if getcustomasset then
-	local link = "https://github.com/net9nixya/Neverpuzo/blob/main/assets/%s?raw=true";
+	local link = "https://github.com/4lpaca-pin/NeverLose/blob/main/assets/%s?raw=true";
 	local dir = 'NLAssets';
 
 	if not isfolder(dir) then
@@ -207,15 +207,15 @@ if getcustomasset then
 	end;
 
 	pcall(function()
-		if not isfile(dir..'/'..'logo3.png') then
-			local byte = game:HttpGet(string.format(link,'logo3.png'));
+		if not isfile(dir..'/'..'logo.png') then
+			local byte = game:HttpGet(string.format(link,'logo.png'));
 
-			writefile(dir..'/'..'logo3.png' , byte);
+			writefile(dir..'/'..'logo.png' , byte);
 			task.wait();
 		end;
 
-		if isfile(dir..'/'..'logo3.png') then
-			NeverLose.GlobalLogo = getcustomasset(dir..'/'..'logo3.png')
+		if isfile(dir..'/'..'logo.png') then
+			NeverLose.GlobalLogo = getcustomasset(dir..'/'..'logo.png')
 		end;
 	end);
 
