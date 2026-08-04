@@ -207,15 +207,15 @@ if getcustomasset then
 	end;
 
 	pcall(function()
-		if not isfile(dir..'/'..'logo2.png') then
-			local byte = game:HttpGet(string.format(link,'logo.png'));
+		if not isfile(dir..'/'..'logo3.png') then
+			local byte = game:HttpGet(string.format(link,'logo3.png'));
 
-			writefile(dir..'/'..'logo2.png' , byte);
+			writefile(dir..'/'..'logo3.png' , byte);
 			task.wait();
 		end;
 
-		if isfile(dir..'/'..'logo2.png') then
-			NeverLose.GlobalLogo = getcustomasset(dir..'/'..'logo.png')
+		if isfile(dir..'/'..'logo3.png') then
+			NeverLose.GlobalLogo = getcustomasset(dir..'/'..'logo3.png')
 		end;
 	end);
 
