@@ -5916,6 +5916,7 @@ function NeverLose:CreateWindow(Config)
 
 		local Watermark_lb = {};
 		local Watermark = Instance.new("Frame")
+		Watermark_lb.Frame = Watermark
 		local UICorner = Instance.new("UICorner")
 		local UIListLayout = Instance.new("UIListLayout")
 		local Shadow = NeverLose:CreateShadow(Watermark);
