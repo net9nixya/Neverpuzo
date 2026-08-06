@@ -6094,30 +6094,53 @@ function NeverLose:CreateWindow(Config)
 				end;
 			end);
 
-			table.insert(Watermark_lb.Renders,InnerBlock.SetRender);
+        table.insert(Watermark_lb.Renders,InnerBlock.SetRender);
 
-			function InnerBlock:SetText(t)
-				Content.Text = t;
+        function InnerBlock:SetText(t)
+            Content.Text = t;
 
-				InnerBlock.Update();
-			end;
+            InnerBlock.Update();
+        end;
 
-			function InnerBlock:Input(func)
-				local c,s = NeverLose:CreateInput(Frame,func);
+        function InnerBlock:Input(func)
+            local c,s = NeverLose:CreateInput(Frame,func);
 
-				return s;
-			end;
+            return s;
+        end;
 
-			return InnerBlock;
-		end;
+        return InnerBlock;
+    end;
 
-		return Watermark_lb;
-	end;
+    local RunService = game:GetService("RunService")
 
-	Window:SetRender(false);
+    local FPS = 0
+    local Frames = 0
+    local LastTick = tick()
 
-	return Window;
+    RunService.RenderStepped:Connect(function()
+        Frames += 1
+
+        if tick() - LastTick >= 1 then
+            FPS = Frames
+            Frames = 0
+            LastTick = tick()
+        end
+    end)
+
+    local FPSBlock = Watermark_lb:AddBlock("F", "0 FPS")
+
+    task.spawn(function()
+        while task.wait(0.2) do
+            FPSBlock:SetText(FPS .. " FPS")
+        end
+    end)
+
+    return Watermark_lb;
 end;
+
+Window:SetRender(false);
+
+return Window;
 
 function NeverLose:CreateNotification()
 	if NeverLose.__Notification_Cache then
